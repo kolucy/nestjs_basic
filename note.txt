@@ -50,7 +50,7 @@ https://docs.nestjs.com/
   - 클라이언트 요청에서 들어오는 데이터를 '유효성 검사' 및 '변환'을 수행하여 서버가 원하는 데이터를 얻을 수 있도록 도와주는 클래스
   - 파이프는 단방향 통신을 위한 용도로 사용된다
   - 하나의 파이프는 이전 파이프에서 전달된 결과를 입력 값으로 받아 또 다른 결과 값을 내놓는다
-- Request Lifecycle
+- *Request Lifecycle
   request -> middleware -> guards -> interceptors(pre-controller) -> pipes -> controller(method handler) -> service -> interceptor(post-request) -> exception filters -> response
 - interceptor
   - @Injectable() 데코레이터로 annotate되는 클래스
@@ -58,5 +58,5 @@ https://docs.nestjs.com/
   - AOP(Aspect Oriented Programming, 관점 지향 프로그래밍) 기술에서 영감을 받은 여러 기능 존재
   - AOP: cross-cutting concern의 분리를 허용함으로써 모듈성을 증가시키는 것이 목적인 프로그래밍 패러다임
   - controller가 시작하기 전과 끝났을 때를 나눠서 코딩 가능
-- middleware와 interceptor의 차이점
+- middleware와 interceptor의 차이점: 실행 순서가 다르다
 - interceptor로 logging을 만들 수 있다
