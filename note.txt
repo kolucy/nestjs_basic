@@ -1,0 +1,45 @@
+[package.json]
+  "dependencies": {
+    "@nestjs/common": "^9.0.0",
+    "@nestjs/core": "^9.0.0",
+    "@nestjs/platform-express": "^9.0.0",
+    // nestjs 안에서 자체적으로 동작하는 라이브러리
+    "reflect-metadata": "^0.1.13",
+    // decorator(@) 문법을 쓸 때 사용되는 패키지
+    "rimraf": "^3.0.2",
+    // linux나 mac에 rm-rf(특정 파일/폴더 제거 명령어)를 windows에서도 사용할 수 있게 해주는 패키지
+    "rxjs": "^7.2.0"
+    // 비동기 및 이벤트 기반 프로그램을 작성하기 위한 라이브러리
+    // RxJS는 NestJS 안에서 쓰이게 됨
+  }
+
+[NestJS]
+https://docs.nestjs.com/
+- 컨트롤러는 들어오는 요청을 처리하고 클라이언트에 응답을 반환한다
+- 컨트롤러의 목적은 애플리케이션에 대한 특정 요청을 수신하는 것
+- 데코레이터는 기능을 첨가
+- app.service를 사용하기 위해 AppController(app.controller) 안에서 의존성 주입을 한다
+- 의존성 주입: class 안에서 service를 사용할 수 있도록 하는 방법
+- nestjs는 module 단위로 이동
+- service, repository, factory 등 기본 Nest classd의 대부분은 provider로 취급될 수 있다
+- provider는 종속성(dependency)으로 주입(inject)될 수 있다
+- provider로 취급되는 것들은 @Injectable() 데코레이터로 표현
+- AppController는 공급된 appServie를 인스턴스로 의존성 주입을 받아서 사용할 수 있다
+- 객체지향 프로그래밍의 핵심 목표: 실생활과 유사하게 코드를 짠다
+  -> 공급자(provider: AppService)/소비자(controller: AppController) 관계, 제품(service: appService), 등록(Module)
+  -> 유지보수를 쉽게, 확장성 있고 탄탄하게 백엔드 설계
+  -> nestjs는 코드에 의존성을 명시함으로써 의존성 관리를 확실하게 한다
+- module 생성 (controller: co, service: service)
+  -> nest g mo <name>
+- spec은 테스트용
+- Module은 기본적으로 provider를 캡슐화한다 (은닉화되어 다른 모듈에서 접근 못함)
+  - 방법1. 외부 모듈에서 서비스를 사용할 수 있도록 해당 Module(cats.module)에서 export한다
+    -> 은닉화 해제 => public
+  - 방법2. app.module에서 provider에 CatsService 등록
+    -> 분리된 모듈들을 다시 합치는 것은 단일 체계 원칙이 깨지므로 좋은 방법이 아님
+    -> app.module이 자체적으로 만든 서비스만 provider에 넣어주는 것이 좋다
+- middleware는 route handler 이전에 호출되는 함수
+- Nest middleware는 기본적으로 express middleware와 동일
+- logger middleware: 요청하는 대상에 대해 어떤 대상이 어떤 것을 요청했는지 찍어주는(logging) 미들웨어
+- @Module() 데코레이터에는 미들웨어를 위한 장소가 없기 때문에 module class의 configure() 메소드를 사용하여 설정한다
+- nestjs는 logging을 할 때 logger라는 class를 사용
