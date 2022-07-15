@@ -43,3 +43,20 @@ https://docs.nestjs.com/
 - logger middleware: 요청하는 대상에 대해 어떤 대상이 어떤 것을 요청했는지 찍어주는(logging) 미들웨어
 - @Module() 데코레이터에는 미들웨어를 위한 장소가 없기 때문에 module class의 configure() 메소드를 사용하여 설정한다
 - nestjs는 logging을 할 때 logger라는 class를 사용
+- Exception
+  Middleware -> Controller -> Service -> Exception
+- Pipes
+  - https://docs.microsoft.com/en-us/azure/architecture/patterns/pipes-and-filters
+  - 클라이언트 요청에서 들어오는 데이터를 '유효성 검사' 및 '변환'을 수행하여 서버가 원하는 데이터를 얻을 수 있도록 도와주는 클래스
+  - 파이프는 단방향 통신을 위한 용도로 사용된다
+  - 하나의 파이프는 이전 파이프에서 전달된 결과를 입력 값으로 받아 또 다른 결과 값을 내놓는다
+- Request Lifecycle
+  request -> middleware -> guards -> interceptors(pre-controller) -> pipes -> controller(method handler) -> service -> interceptor(post-request) -> exception filters -> response
+- interceptor
+  - @Injectable() 데코레이터로 annotate되는 클래스
+  - NestInterceptor 인터페이스를 구현
+  - AOP(Aspect Oriented Programming, 관점 지향 프로그래밍) 기술에서 영감을 받은 여러 기능 존재
+  - AOP: cross-cutting concern의 분리를 허용함으로써 모듈성을 증가시키는 것이 목적인 프로그래밍 패러다임
+  - controller가 시작하기 전과 끝났을 때를 나눠서 코딩 가능
+- middleware와 interceptor의 차이점
+- interceptor로 logging을 만들 수 있다
