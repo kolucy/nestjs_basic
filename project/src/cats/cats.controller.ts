@@ -22,10 +22,32 @@ import { SuccessInterceptor } from 'src/common/interceptors/success.interceptor'
 export class CatsController {
   constructor(private readonly catsService: CatsService) {}
 
+  @Get()
+  getCurrentCat() {
+    return 'current cat'; // 현재 로그인한 고양이
+  }
+
+  @Post()
+  async signUp() {
+    return 'signup';
+  }
+
+  @Post('login') logIn() {
+    return 'login';
+  }
+
+  @Post('logout') logOut() {
+    return 'logout';
+  }
+
+  @Post('upload/cats') uploadCatImg() {
+    return 'uploadImg';
+  }
+
+  /* ---
   // cats/
   @Get()
   getAllCat() {
-    // throw new HttpException('api is broken', 401);
     // throw new HttpException({ success: false, message: 'api is broken' }, 401);
     console.log('hello controller');
     return { cats: 'all cat' };
@@ -61,4 +83,5 @@ export class CatsController {
   deleteCat() {
     return 'delete service';
   }
+  --- */
 }
