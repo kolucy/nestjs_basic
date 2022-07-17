@@ -60,3 +60,10 @@ https://docs.nestjs.com/
   - controller가 시작하기 전과 끝났을 때를 나눠서 코딩 가능
 - middleware와 interceptor의 차이점: 실행 순서가 다르다
 - interceptor로 logging을 만들 수 있다
+- mongoose에서는 virtual field를 제공해준다
+  - 실제로 db에 저장되는 필드는 아니지만 비즈니스 로직에서 사용할 수 있도록 제공해주는 필드
+- CORS
+  - Cross-origin resource sharing
+  - 내가 서비스하고있지 않는 서비스에서 의도치 않는 접근을 막아주는 것
+  - CORS에서 허용한 사이트만 접근할 수 있도록 하는 것
+  - 어떤 프론트엔드 사이트에서 API를 사용할지 설정

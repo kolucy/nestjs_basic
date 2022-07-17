@@ -30,7 +30,7 @@ export class AppController {
 
   @Get('hello/:id/:name') // 'endpoint' 작성 + 동적 라우팅
   getCatHello() {
-    return this.catsService.hiCatServiceProduct();
+    // return this.catsService.hiCatServiceProduct();
   }
 }
 

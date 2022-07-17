@@ -13,8 +13,8 @@ import { LoggerMiddleware } from './common/middlewares/logger.middleware';
     MongooseModule.forRoot(process.env.MONGODB_URI, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
-      useCreateIndex: true, // MongoDB에서 인덱싱을 하겠다
-      useFindAndModify: false,
+      // useCreateIndex: true, // MongoDB에서 인덱싱을 하겠다
+      // useFindAndModify: false,
     }),
     CatsModule,
   ],
