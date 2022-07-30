@@ -6,6 +6,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { CatsModule } from './cats/cats.module';
 import { LoggerMiddleware } from './common/middlewares/logger.middleware';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -17,6 +18,7 @@ import { LoggerMiddleware } from './common/middlewares/logger.middleware';
       // useFindAndModify: false,
     }),
     CatsModule,
+    AuthModule,
   ],
   // CatsModule에서 export한 서비스들을 AppModule(AppController, Appservice)에서 사용
   controllers: [AppController],
