@@ -81,5 +81,6 @@ Use mongoose.model(name, schema)
   - package.json에서 해당 부분 수정 후 npm i
   - "mongoose" : "^5.13.9"
   - "@nestjs/mongoose" : "^8.0.1"
-- populate() method 활용
+- mongoose - populate() method 활용
   - virtual field를 만들어서 다른 document와 연결
+  - https://mongoosejs.com/docs/populate.html
