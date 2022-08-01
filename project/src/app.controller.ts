@@ -1,7 +1,7 @@
 import { Body, Controller, Get, Param, Req } from '@nestjs/common';
 import { Request } from 'express';
 import { AppService } from './app.service';
-import { CatsService } from './cats/cats.service';
+import { CatsService } from './cats/services/cats.service';
 
 // @: Decorator - 함수나 클래스에 기능을 첨가 -> 재사용성을 극대화
 @Controller() // () 안에 'endpoint' 작성 가능
