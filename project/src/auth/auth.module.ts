@@ -1,4 +1,5 @@
 import { forwardRef, Module } from '@nestjs/common';
+import { ConfigModule } from '@nestjs/config';
 import { JwtModule } from '@nestjs/jwt';
 import { PassportModule } from '@nestjs/passport';
 import { CatsModule } from 'src/cats/cats.module';
@@ -8,10 +9,12 @@ import { JwtStrategy } from './jwt/jwt.strategy';
 @Module({
   imports: [
     // strategy 설정
+    ConfigModule.forRoot(),
     PassportModule.register({ defaultStrategy: 'jwt', session: false }),
     // 로그인
     JwtModule.register({
-      secret: 'secret',
+      // secret: 'secret',
+      secret: process.env.JWT_SECRET,
       signOptions: { expiresIn: '1y' },
     }),
     forwardRef(() => CatsModule),
