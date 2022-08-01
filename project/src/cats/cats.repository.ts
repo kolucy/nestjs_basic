@@ -37,6 +37,10 @@ export class CatsRepository {
     return newCat.readOnlyData;
   }
 
+  async findAll() {
+    return await this.catModel.find();
+  }
+
   async create(cat: CatRequestDto): Promise<Cat> {
     return await this.catModel.create(cat);
   }
