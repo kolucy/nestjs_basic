@@ -74,3 +74,10 @@ https://docs.nestjs.com/
   - repository 패턴도 dependency injection이 가능한 클래스다
     -> Service에서 의존성 주입을 받아서 사용하기 때문
   - 디자인 패턴 중 하나 -> 필수 패턴은 아님, 개인의 선택
+- mongoose 버전 문제
+  - ERROR [ExceptionsHandler] Schema hasn't been registered for model "comments".
+Use mongoose.model(name, schema)
+  - mongoose 버전 6으로 올라가면 nest 8과 호환되지 않는 부분이 있다
+  - package.json에서 해당 부분 수정 후 npm i
+  - "mongoose" : "^5.13.9"
+  - "@nestjs/mongoose" : "^8.0.1"

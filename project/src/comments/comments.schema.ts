@@ -5,6 +5,7 @@ import { Document, SchemaOptions, Types } from 'mongoose';
 
 const options: SchemaOptions = {
   timestamps: true,
+  // 여기서 스키마 이름을 따로 지정하지 않으면 아래 export 하는 class 이름(Comments)으로 지어준다(소문자 => comments)
 };
 
 @Schema(options) // Schema 데코레이션을 사용하여 스키마 정의
