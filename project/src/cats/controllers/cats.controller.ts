@@ -74,9 +74,10 @@ export class CatsController {
   @ApiOperation({ summary: '고양이 이미지 업로드' })
   @UseGuards(JwtAuthGuard)
   @Post('upload')
-  @UseInterceptors(FileInterceptor('image'))
+  @UseInterceptors(FileInterceptor('image', multerOptions()))
   async uploadCatImg(@UploadedFile() file: Express.Multer.File) {
     console.log(file);
+    //console.log(file.buffer);
     return await this.awsService.uploadFileToS3('cats', file);
   }
 

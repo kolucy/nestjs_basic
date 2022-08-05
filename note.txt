@@ -84,3 +84,9 @@ Use mongoose.model(name, schema)
 - mongoose - populate() method 활용
   - virtual field를 만들어서 다른 document와 연결
   - https://mongoosejs.com/docs/populate.html
+- Multer
+  - Issue: Multer file buffer missing(undefined)
+  - Storage
+    - DiskStorage: 파일을 disk에 저장
+    - MemoryStorage: 파일을 memory에 Buffer 객체로 저장
+  - buffer is for MemoryStorage only
