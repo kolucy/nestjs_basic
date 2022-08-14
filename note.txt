@@ -90,3 +90,68 @@ Use mongoose.model(name, schema)
     - DiskStorage: 파일을 disk에 저장
     - MemoryStorage: 파일을 memory에 Buffer 객체로 저장
   - buffer is for MemoryStorage only
+
+[AWS 클라우드 VPS 구축 & PM2로 서버 운영]
+1. Pm2 설치 https://github.com/Unitech/pm2
+- npm i pm2 -g
+- pm2 list
+- package.json 수정, .env MODE=‘prod’로 수정, PORT=80으로 수정
+- npm run start:debug 
+  - build 전에 debug를 사용하여 코드에 에러가 있는지 확인
+  - prod 모드에서는 쿼리 관련 로그가 없다(mongodb)
+- npm run build
+  - dist 제거 후 다시 생성
+  - dist는 배포용 디렉터리
+- npm run start:prod
+- pm2 list
+- pm2 kill
+
+2. github에 코드 올리기
+- https://github.com/amamov/gits
+- .env는 .gitignore에 추가해서 올리기
+- dist만 따로 빼서
+  - 개발용에서는 dist가 필요없기 때문에 .gitignore에 dist를 넣었지만, 배포용에서는 필요
+
+3. VPS : 가상 사설 서버 구축
+- AWS Lightsail 사용 
+- 인스턴스 생성
+- ssh를 사용하여 연결
+  - 원격 접속 프로토콜로 ssh를 사용
+- sudo apt-get update
+  - apt-get(Advanced Packaging Tool): 리눅스 패키지 관리 명령어 도구
+- sudo apt-get -y upgrade
+- sudo apt-get install build-essential
+  - build-essential: 빌드에서 핵심적으로 담당하는 패키지
+- sudo apt-get install curl
+- curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash --
+- sudo apt-get install -y nodejs
+- sudo apt-get install git
+- sudo apt-get install vim
+  - vim: shell에서 코드 editing을 할 수 있는 도구
+- touch .gitconfig
+  - git에 대한 setting file 생성
+  - 안하고 넘어가는 경우도 많지만, git에 확실하게 사용자 등록을 하기 위함
+- git config --global user.name kolucy
+- git config --global user.email lucychan20d@gmail.com
+- git config --global --list
+- git clone <프로젝트>
+  - git clone https://github.com/kolucy/nestcats-deploy.git
+- ll
+- cd <프로젝트>
+  - cd nestcats-deploy/
+- npm i
+  - package.json을 기반으로 필요한 node_modules들을 설치
+- sudo npm i -g @nestjs/cli
+- sudo npm i -g pm2
+  - @nestjs/cli와 pm2는 프로젝트를 관리하기 위한 도구이기 때문에 global로 설치하는 것이 좋음
+- vi .env (환경변수 붙여 넣기)
+  - gitignore에서 .env(환경변수)를 추가했으므로 여기서는 없는 상태
+- sudo npm run start:prod
+
+4. 고정 퍼블릭 주소 할당받기
+- 15.164.44.210
+- 도메인을 붙여주는 작업 필요
+  - Route 53에서 도메인 등록
+  - 등록 후 DNS 서버에 ip를 붙여주면 접속 가능
+
+5. 배포 성공!!!
