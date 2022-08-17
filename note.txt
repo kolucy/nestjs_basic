@@ -185,4 +185,27 @@ Use mongoose.model(name, schema)
   - 빠른 페이지 렌더링
   - Node.js 환경에서 실행되기 때문에 브라우저 관련 API를 다룰 때 주의해야 한다
   - SSR의 대표적인 예: MDN
-- SSR과 CSR을 의도에 맞게 번갈아가며 사용하는 것이 효율적이다 
+- SSR과 CSR을 의도에 맞게 번갈아가며 사용하는 것이 효율적이다
+
+[MVC 패턴]
+- 소프트웨어 디자인 패턴
+- Model, View, Controller 책임을 분리해서 나눈 패턴
+- 하나의 소프트웨어 프로그램을 각각의 영역으로 관심사를 분리
+- Model
+  - MongoDB, mongoose
+  - 앱이 포함해야 할 데이터가 무엇인지를 정의한다
+- View
+  - HTML 파일(html, css, js)
+  - 데이터를 보여주는 방식을 정의
+- Controller
+  - 사용자 입력에 대한 응답으로 Model 또는 View를 업데이트하는 로직을 포함한다
+- NestJS에서 MVC 패턴을 지원
+- nest new chattings
+- npm install --save hbs
+  - HTML을 렌더링할 수 있는 엔진
+  - hbs(Handlebars): 템플릿 엔진
+  - hbs 파일은 nest에서 처리 후 서버사이드에서 클라이언트사이드로 보낼 때 html로 렌더링되어 보내진다
+  - hbs는 html과 달리 변수를 받을 수 있다 - by {{}}
+- npm i --save @nestjs/config
+  - 환경변수(.env) 설정을 위해 설치
+- npm install --save @nestjs/mongoose mongoose
