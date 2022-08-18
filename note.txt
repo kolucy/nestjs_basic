@@ -209,3 +209,27 @@ Use mongoose.model(name, schema)
 - npm i --save @nestjs/config
   - 환경변수(.env) 설정을 위해 설치
 - npm install --save @nestjs/mongoose mongoose
+
+[HTTP vs. Socket]
+- HTTP 연결 방식: 단방향
+  - 응답을 보내는 순간 연결 종료
+  - 단방향: 클라이언트가 반드시 request를 해야 서버에서 response를 보낸다
+  - polling 방식: 요청을 계속 보내 단방향 연결을 여러번 수행하여 양방향 연결처럼 보이게 하는 것
+    - 단점: 0.01초마다 요청-응답을 반복하므로 서버에 부하가 온다
+    - 해결방법: Socket 연결 방식
+- Socket 연결 방식: 양방향
+  - socket: 입구, 콘센트
+
+[Socket Programming]
+- 일반적으로 socket programming은 Gateway를 사용하여 개발
+- gateway는 Injectable(dependency injection 가능)한 클래스
+- npm i --save @nestjs/websockets @nestjs/platform-socket.io
+- socket.io: emit과 on으로 소통
+- nest g ga chats -> gateway class 생성
+- nest g mo chats -> module 생성
+- gateway로 socket programming을 한다
+- socket을 사용하기 위해서는 socket.io라는 CDN(Content Delivery Network) 서비스 필요
+- 라이브러리는 html 파일에 script로 넣을 수 있다
+  - cdn.socket.io: 클라이언트에서 사용할 수 있도록
+  - polyfill: Promise.all() 사용할 수 있도록
+  - babel: 최신 js 문법을 브라우저에서 사용할 수 있도록
