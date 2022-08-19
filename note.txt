@@ -233,3 +233,6 @@ Use mongoose.model(name, schema)
   - cdn.socket.io: 클라이언트에서 사용할 수 있도록
   - polyfill: Promise.all() 사용할 수 있도록
   - babel: 최신 js 문법을 브라우저에서 사용할 수 있도록
+- socket.emit으로 보내고 socket.on으로 받는다
+- socket은 각각의 id가 존재, id는 연결이 끊기기 전까지 유지된다
+- socket.on은 콜백 함수로 데이터를 받을 수 있다

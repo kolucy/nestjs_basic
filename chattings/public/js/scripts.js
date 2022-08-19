@@ -8,6 +8,13 @@ const formElement = getElementById('chat_form');
 
 function helloUser() {
   const username = prompt('What is your name?');
+  socket.emit('new_user', username, (data) => {
+    console.log(data);
+  }); // 인자1: 이벤트이름, 인자2: 데이터
+  console.log(username);
+  socket.on('hello_user', (data) => {
+    console.log(data);
+  });
 }
 
 function init() {
