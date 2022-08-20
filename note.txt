@@ -236,3 +236,17 @@ Use mongoose.model(name, schema)
 - socket.emit으로 보내고 socket.on으로 받는다
 - socket은 각각의 id가 존재, id는 연결이 끊기기 전까지 유지된다
 - socket.on은 콜백 함수로 데이터를 받을 수 있다
+- socket.io를 지원하지 않는 브라우저가 있으므로 polling으로 먼저 확인 후 websocket 방식으로 통신한다
+
+[Lifecycle hooks]
+- 인터페이스: OnGatewayInit, OnGatewayConnection, OnGatewayDisconnect
+- OnGatewayInit
+  - afterInit() 메소드를 강제로 구현
+  - 초기화되고 바로 실행되는 함수
+  - constructor가 메모리에 올라온 후 gateway가 작동될 때 init 실행 => init은 constructor 다음으로 실행된다
+- OnGatewayConnection
+  - handleConnection() 메소드를 강제로 구현
+  - socket이 처음 연결될 때 메소드 실행
+- OnGatewayDisconnect
+  - handleDisconnect() 메소드를 강제로 구현
+  - socket이 연결이 끊길 때 실행되는 함수

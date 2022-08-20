@@ -6,7 +6,7 @@ import {
 } from '@nestjs/websockets';
 import { Socket } from 'socket.io';
 
-@WebSocketGateway()
+@WebSocketGateway({ namespace: 'chattings' })
 export class ChatsGateway {
   @SubscribeMessage('new_user') // 데코레이터가 on으로 해당 이벤트의 메세지를 받음
   handleNewUser(

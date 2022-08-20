@@ -1,4 +1,4 @@
-const socket = io('/'); // io: socket.io.min.js의 하나의 메소드
+const socket = io('/chattings'); // io: socket.io.min.js의 하나의 메소드
 const getElementById = (id) => document.getElementById(id) || null;
 
 //* get DOM element
