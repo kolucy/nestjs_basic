@@ -39,7 +39,9 @@ export class ChatsGateway
   ) {
     console.log(username);
     console.log(username);
-    socket.emit('hello_user', 'hello ' + username);
-    return 'hello world';
+    // socket.emit('hello_user', 'hello ' + username);
+    // username을 db에 적재
+    socket.broadcast.emit('user_connected', username);
+    return username;
   }
 }

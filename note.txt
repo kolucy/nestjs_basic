@@ -250,3 +250,8 @@ Use mongoose.model(name, schema)
 - OnGatewayDisconnect
   - handleDisconnect() 메소드를 강제로 구현
   - socket이 연결이 끊길 때 실행되는 함수
+
+[Broadcasting]
+- 연결된 모든 네트워크에 메세지를 보낸다
+- 모든 클라이언트가 서버에서 보낸 broadcasting event를 받는다
+- socket.emit은 해당하는 id를 가진 socket에만 데이터를 보내는 반면, socket.broadcast.emit은 연결된 모든 소켓에 데이터를 보낸다
