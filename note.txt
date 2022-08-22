@@ -237,6 +237,7 @@ Use mongoose.model(name, schema)
 - socket은 각각의 id가 존재, id는 연결이 끊기기 전까지 유지된다
 - socket.on은 콜백 함수로 데이터를 받을 수 있다
 - socket.io를 지원하지 않는 브라우저가 있으므로 polling으로 먼저 확인 후 websocket 방식으로 통신한다
+- 소켓 프로그래밍의 핵심: '이벤트 정의'와 '이벤트 설계'
 
 [Lifecycle hooks]
 - 인터페이스: OnGatewayInit, OnGatewayConnection, OnGatewayDisconnect
@@ -255,3 +256,6 @@ Use mongoose.model(name, schema)
 - 연결된 모든 네트워크에 메세지를 보낸다
 - 모든 클라이언트가 서버에서 보낸 broadcasting event를 받는다
 - socket.emit은 해당하는 id를 가진 socket에만 데이터를 보내는 반면, socket.broadcast.emit은 연결된 모든 소켓에 데이터를 보낸다
+
+[Event Bubbling]
+- 특정 화면 요소에서 이벤트가 발생했을 때 해당 이벤트가 더 상위의 화면 요소들로 전달되어 가는 특성

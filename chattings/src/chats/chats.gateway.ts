@@ -20,6 +20,10 @@ export class ChatsGateway
     this.logger.log('constructor');
   }
 
+  afterInit() {
+    this.logger.log('init');
+  }
+
   handleDisconnect(@ConnectedSocket() socket: Socket) {
     // 데코레이터로 인자를 받는다
     this.logger.log(`disconnected : ${socket.id} ${socket.nsp.name}`); // nsp: namespace
@@ -29,9 +33,6 @@ export class ChatsGateway
     this.logger.log(`connected : ${socket.id} ${socket.nsp.name}`); // nsp: namespace
   }
 
-  afterInit() {
-    this.logger.log('init');
-  }
   @SubscribeMessage('new_user') // 데코레이터가 on으로 해당 이벤트의 메세지를 받음
   handleNewUser(
     @MessageBody() username: string,
@@ -43,5 +44,16 @@ export class ChatsGateway
     // username을 db에 적재
     socket.broadcast.emit('user_connected', username);
     return username;
+  }
+
+  @SubscribeMessage('submit_chat')
+  handleSubmitChat(
+    @MessageBody() chat: string,
+    @ConnectedSocket() socket: Socket,
+  ) {
+    socket.broadcast.emit('new_chat', {
+      chat,
+      username: socket.id,
+    });
   }
 }
