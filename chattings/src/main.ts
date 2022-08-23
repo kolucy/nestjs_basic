@@ -1,3 +1,4 @@
+import { ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { NestExpressApplication } from '@nestjs/platform-express';
 import { join } from 'path';
@@ -11,6 +12,7 @@ async function bootstrap() {
   // 템플릿 엔진 저장위치 설정 - views에 있는 파일을 view로 사용
   app.setBaseViewsDir(join(__dirname, '..', 'views'));
   app.setViewEngine('hbs'); // ViewEngine으로 hbs 사용
+  app.useGlobalPipes(new ValidationPipe());
 
   // __dirname: 현재 디렉토리(src)
   // join(__dirname, '..', 'public'): src -> 상위폴더(chattings) -> public 폴더
