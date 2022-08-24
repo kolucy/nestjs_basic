@@ -14,6 +14,7 @@ socket.on('new_chat', (data) => {
   const { chat, username } = data;
   drawNewChat(`${username}: ${chat}`);
 });
+socket.on('disconnect_user', (username) => drawNewChat(`${username}: bye...`));
 
 //* event callback function
 const handleSubmit = (event) => {
@@ -24,7 +25,7 @@ const handleSubmit = (event) => {
   if (inputValue !== '') {
     socket.emit('submit_chat', inputValue);
     // 화면에 그리기
-    drawNewChat(`me: ${inputValue}`);
+    drawNewChat(`me: ${inputValue}`, true);
     // 채팅을 보낸 후 input창에 남아있는 inputValue를 비운다
     event.target.elements[0].value = '';
   }
