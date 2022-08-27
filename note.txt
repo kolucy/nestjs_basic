@@ -259,3 +259,17 @@ Use mongoose.model(name, schema)
 
 [Event Bubbling]
 - 특정 화면 요소에서 이벤트가 발생했을 때 해당 이벤트가 더 상위의 화면 요소들로 전달되어 가는 특성
+
+[PostgreSQL]
+- Docker: 컨테이너 격리 기술을 제공하는 소프트웨어
+- pgAdmin: DB 관리 툴
+- container 생성: docker-compose up -d
+  - 옵션 -d: demon에서 연다
+  - demon 서버는 백그라운드에서 돌아간다
+- SELECT * FROM public."USER";
+
+[Thunder Client]
+- VSCode에서 사용할 수 있는 확장 클라이언트
+- Ctrl + Shift + P -> Thunder Client: Focus on Thunder Client View -> New Request
+- ERROR
+  - Login sessions require session support. Did you forget to use `express-session` middleware?
