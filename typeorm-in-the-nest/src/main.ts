@@ -14,6 +14,7 @@ import { HttpApiExceptionFilter } from './common/exceptions/http-api-exception.f
 import * as expressSession from 'express-session';
 
 class Application {
+  // 자식 클래스에서 사용할 일이 없으므로 private로
   private logger = new Logger(Application.name);
   private DEV_MODE: boolean;
   private PORT: string;
@@ -29,8 +30,8 @@ class Application {
     this.PORT = process.env.PORT || '5000';
     this.corsOriginList = process.env.CORS_ORIGIN_LIST
       ? process.env.CORS_ORIGIN_LIST.split(',').map((origin) => origin.trim())
-      : ['*'];
-    this.ADMIN_USER = process.env.ADMIN_USER || 'amamov';
+      : ['*']; // API가 어떤 곳에서 사용되는지(*는 모든 곳에서 사용을 허용)
+    this.ADMIN_USER = process.env.ADMIN_USER || 'amamov'; // swagger 문서
     this.ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || '1205';
   }
 
@@ -53,7 +54,7 @@ class Application {
       SwaggerModule.createDocument(
         this.server,
         new DocumentBuilder()
-          .setTitle('Yoon Sang Seok - API')
+          .setTitle('Yoon Sang Seo - API')
           .setDescription('TypeORM In Nest')
           .setVersion('0.0.1')
           .build(),
@@ -80,7 +81,7 @@ class Application {
       new ValidationPipe({
         transform: true,
       }),
-    );
+    ); // DTO 설정시 많이 쓰임
     this.server.use(passport.initialize());
     this.server.use(passport.session());
     this.server.useGlobalInterceptors(
@@ -90,8 +91,8 @@ class Application {
   }
 
   async boostrap() {
-    await this.setUpGlobalMiddleware();
-    await this.server.listen(this.PORT);
+    await this.setUpGlobalMiddleware(); // middleware 추가
+    await this.server.listen(this.PORT); // 해당 포트에서 서버를 연다
   }
 
   startLog() {
@@ -108,8 +109,8 @@ class Application {
 }
 
 async function init(): Promise<void> {
-  const server = await NestFactory.create<NestExpressApplication>(AppModule);
-  const app = new Application(server);
+  const server = await NestFactory.create<NestExpressApplication>(AppModule); // 서버를 받는다
+  const app = new Application(server); // 싱글톤 패턴으로 인스턴스로 app을 찍어낸다
   await app.boostrap();
   app.startLog();
 }

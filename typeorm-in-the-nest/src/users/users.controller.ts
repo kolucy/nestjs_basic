@@ -31,8 +31,8 @@ export class UsersController {
   ) {}
 
   @Get()
-  @UseGuards(JwtAuthGuard)
-  @UseInterceptors(OnlyPrivateInterceptor)
+  @UseGuards(JwtAuthGuard) // jwt를 parse
+  @UseInterceptors(OnlyPrivateInterceptor) // OnlyPrivateInterceptor에서 user 추출 -> 로그인한 유저만 사용할 수 있도록 설정
   async getCurrentUser(@CurrentUser() currentUser: UserDTO) {
     return currentUser;
   }
@@ -57,6 +57,6 @@ export class UsersController {
 
   @Post('logout')
   async logOut(@Res({ passthrough: true }) response: Response) {
-    response.clearCookie('jwt');
+    response.clearCookie('jwt'); // jwt key에 해당하는 쿠키를 제거
   }
 }

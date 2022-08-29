@@ -13,6 +13,7 @@ import { UserDTO } from './dtos/user.dto';
 import { UserLogInDTO } from './dtos/user-login.dto';
 import { UserRegisterDTO } from './dtos/user-register.dto';
 import { ConfigService } from '@nestjs/config';
+import { response } from 'express';
 
 @Injectable()
 export class UsersService {
@@ -52,6 +53,11 @@ export class UsersService {
         { sub: user.id },
         { secret: this.configService.get('SECRET_KEY') },
       );
+      /*
+      // httpOnly를 사용해서, jwt라는 key를 가진 cookie에 넣어준다
+      response.cookie('jwt', jwt, { httpOnly: true })
+      */
+      //response.cookie('jwt', jwt, { httpOnly: true }).status(200);
       return { jwt, user };
     } catch (error) {
       throw new BadRequestException(error.message);

@@ -273,3 +273,12 @@ Use mongoose.model(name, schema)
 - Ctrl + Shift + P -> Thunder Client: Focus on Thunder Client View -> New Request
 - ERROR
   - Login sessions require session support. Did you forget to use `express-session` middleware?
+
+[TDD]
+- 테스트 주도 개발(Test-Driven Development)
+- test -> app.e2e-spec.ts
+- TestingModule: jest를 nestjs framework에서 사용할 수 있도록 도와주는 모듈
+- describe 내에서 describe할 수 있다
+- beforeEach는 테스트 진행 전에 가장 먼저 실행되는 함수
+- axios: node.js와 브라우저를 위한 Promise 기반 HTTP 클라이언트(비동기 통신 라이브러리)
+- it == test
