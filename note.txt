@@ -282,3 +282,29 @@ Use mongoose.model(name, schema)
 - beforeEach는 테스트 진행 전에 가장 먼저 실행되는 함수
 - axios: node.js와 브라우저를 위한 Promise 기반 HTTP 클라이언트(비동기 통신 라이브러리)
 - it == test
+
+[ERD 모델링]
+- ERD: Entitiy-Relationship Diagram
+- 테이블(physical // logical: domain or entity)
+- ERD: 테이블(도메인) 간의 연결 관계를 나타낸 것
+- DA 가이드: https://dataonair.or.kr/db-tech-reference/d-guide/da-guide/?pageid=1&mod=list&target=&keyword=%EC%A0%95%EA%B7%9C%ED%99%94
+- 정규화: 테이블을 어떻게 잘 쪼갤지
+- ERD 표기법
+  - 관계선의 종류
+    - 실선(Identifying): 식별관계
+      - 부모테이블의 PK가 자식테이블의 PK/FK가 되는 경우
+      - 부모가 있어야 자식이 생기는 경우
+    - 점선(Non-Identifying): 비식별관계
+      - 부모테이블의 PK가 자식테이블의 일반속성이 되는 경우
+      - 부모가 없어도 자식이 생기는 경우
+  - 기호, 도형의 종류
+    - | : 1개 / 실선은 '1'을 의미
+    - ∈ : 여러개 / 까마귀 발은 '다수' 혹은 '그 이상'을 의미
+    - o : 0개 / 고리는 '0'을 의미
+  - A  | B : 하나의 A는 하나의 B로 구성되어 있다
+  - A  ∈ B : 하나의 A는 하나 이상의 B로 구성되어 있다
+  - A  o| B : 하나의 A는 하나 이하의 B로 구성되어 있다
+  - A  o∈ B : 하나의 A는 0 또는 하나 이상의 B로 구성되어 있다
+- N:M 관계를 물리적으로 표현하기 위해서는 중간에 테이블이 필요(튜플 형식)
+- TypeORM 자체에서 N:M 관계를 논리적으로 표현이 가능하도록 제공해준다(N:M 관계 매핑)
+- module은 도메인 단위로 끊어주는 것이 좋다
