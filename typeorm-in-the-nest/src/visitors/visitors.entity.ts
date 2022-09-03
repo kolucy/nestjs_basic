@@ -15,7 +15,7 @@ export class VisitorEntity extends CommonEntity {
   //* Relation */
 
   @ManyToOne(() => BlogEntity, (blog: BlogEntity) => blog.visitors, {
-    onDelete: 'SET NULL',
+    onDelete: 'SET NULL', // delete 시 컬럼을 NULL로 변경
   })
   @JoinColumn([{ name: 'blog_id', referencedColumnName: 'id' }])
   blog: BlogEntity;

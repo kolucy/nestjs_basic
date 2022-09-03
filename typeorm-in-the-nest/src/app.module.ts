@@ -10,6 +10,7 @@ import { BlogsModule } from './blogs/blogs.module';
 import { TagsModule } from './tags/tags.module';
 import { VisitorsModule } from './visitors/visitors.module';
 import { ProfilesModule } from './profiles/profiles.module';
+import { VisitorsModule } from './visitors/visitors.module';
 
 const typeOrmModuleOptions = {
   useFactory: async (

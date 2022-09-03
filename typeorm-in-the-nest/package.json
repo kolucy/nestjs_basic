@@ -1,8 +1,10 @@
 {
-  "name": "amamov.com",
-  "version": "1.8.0",
-  "author": "yoon sang seok",
-  "license": "MIT",
+  "name": "typeorm-in-the-nest",
+  "version": "0.0.1",
+  "description": "",
+  "author": "",
+  "private": true,
+  "license": "UNLICENSED",
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "nest build",

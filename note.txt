@@ -308,3 +308,40 @@ Use mongoose.model(name, schema)
 - N:M 관계를 물리적으로 표현하기 위해서는 중간에 테이블이 필요(튜플 형식)
 - TypeORM 자체에서 N:M 관계를 논리적으로 표현이 가능하도록 제공해준다(N:M 관계 매핑)
 - module은 도메인 단위로 끊어주는 것이 좋다
+
+[엔터티간 관계]
+- @OneToOne()
+  - 단방향 연결, 양방향도 가능
+  - User을 통해서만 Profile에 접근할 수 있으므로 단방향으로 연결(users.entity에만 작성)
+- @JoinColumn()
+  - 양방향 연결의 경우 JoinColumn은 한곳에만 작성하는 것이 좋다
+  - @ManyToOne에서 Many에 해당하는 컬럼에 조인하는 것이 좋다
+  - 외래키 정보를 적는다
+  - name: DB에 저장될 컬럼 이름 설정
+  - referencedColumnName: name에 참조할 실제 컬럼명
+- @OneToMany()
+- @ManyToOne()
+- @ManyToMany
+- @JoinTable(): 테이블 생성
+- cascade
+  - CASCADE 는 부모의 영속성 상태를 자식에게 전달할 때 사용
+  - 부모를 저장할 때, 추가된 자식을 저장하거나 부모를 삭제할 때 연관된 자식을 삭제하는 것
+  => 따라서 확실하게 자식을 관리하는 엔티티가 해당 엔터티 하나일때만 사용해야 하며, 데이터의 라이프 사이클이 같을 때 써야한다.
+- nest g res visitors
+  - CRUD 관련 resource 생성
+
+[AdminBro]
+- 관리자 페이지 개발
+- nest new mongoose-admin
+- npm install --save @nestjs/mongoose mongoose
+- npm i @adminjs/express @adminjs/mongoose @adminjs/nestjs adminjs
+- npm i --save @nestjs/config
+- nest g mo blog (test용)
+- nest g mo admin
+- AdminModule.createAdminAsync
+  - admin 사이트 생성
+- TypeError: Cannot destructure property 'Database' of 'undefined' as it is undefined.
+    at Function.registerAdapter (C:\Users\Lucy\gitProjects\nestjs_basic\mongoose-admin\node_modules\adminjs\lib\adminjs.js:158:5)
+    at Object.<anonymous> (C:\Users\Lucy\gitProjects\nestjs_basic\mongoose-admin\src\admin\admin.module.ts:10:9)
+    - 컴파일 에러
+    - import AdminJSMongoose from '@adminjs/mongoose'; -> import * as AdminJSMongoose from '@adminjs/mongoose';

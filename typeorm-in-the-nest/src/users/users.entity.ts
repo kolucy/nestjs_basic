@@ -38,7 +38,8 @@ export class UserEntity extends CommonEntity {
   //* Relation */
 
   @OneToOne(() => ProfileEntity) // 단방향 연결, 양방향도 가능
-  @JoinColumn({ name: 'profile_id', referencedColumnName: 'id' })
+  // User을 통해서만 Profile에 접근할 수 있으므로 단방향으로 연결(users.entity에만 정의)
+  @JoinColumn({ name: 'profile_id', referencedColumnName: 'id' }) // JoinColumn은 한곳에만 작성하는 것이 좋다
   profile: ProfileEntity;
 
   @OneToMany(() => BlogEntity, (blog: BlogEntity) => blog.author, {
