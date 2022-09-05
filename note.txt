@@ -345,3 +345,12 @@ Use mongoose.model(name, schema)
     at Object.<anonymous> (C:\Users\Lucy\gitProjects\nestjs_basic\mongoose-admin\src\admin\admin.module.ts:10:9)
     - 컴파일 에러
     - import AdminJSMongoose from '@adminjs/mongoose'; -> import * as AdminJSMongoose from '@adminjs/mongoose';
+- ERROR [PackageLoader] The "@adminjs/express" package is missing. Please, make sure to install this library ($ npm install @adminjs/express) 
+to take advantage of @adminjs/nestjs.
+  - npm i express-session express-formidable
+  - https://github.com/SoftwareBrothers/adminjs-nestjs/issues/23
+- connect ECONNREFUSED 127.0.0.1:27017
+  - '서비스' 자동 설정 확인 이후 '시작'하기
+  - https://pandam.net/86
+- Customize dashboard
+  - https://docs.adminjs.co/tutorial-custom-dashboard.html
